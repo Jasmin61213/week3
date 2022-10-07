@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="utf-8">
+        <title>week3</title>
+        <link rel="stylesheet" type="text/css" href="week3.css">
+    </head>
+    <body class="body">
+        <div class="desktop-menu">
+            <div class="home">
+                <div class="left">
+                    My Website
+                </div>
+                <div class="right">
+                    <div class="item">item1</div>
+                    <div class="item">item2</div>
+                    <div class="item">item3</div>
+                    <div class="item">item4</div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <div class="home">
+                <div class="left">
+                    My Website
+                </div>
+                <div class="right">
+                    <img src="img/list.png" height="50px">
+                </div>
+            </div>
+        </div>
+        <div class="title">
+            Welcome to MyHome
+        </div>
+        <div class="main">
+            <div class="body1">
+                <div class="promotion">
+                    <img src="img/momo.jpg" class="img1">
+                    <div class="text" id="text">這是我家的貓</div>
+                </div>
+                <div class="promotion">
+                    <img src="img/momo.jpg" class="img1">
+                    <div class="text">這是我家的貓</div>
+                </div>
+            </div>
+            <div class="body2">
+                <div class="momo">
+                    <img src="img/momo.jpg" class="img2">
+                    <div class="text1">她叫茉茉</div>
+                </div>
+                <div class="momo">
+                    <img src="img/momo.jpg" class="img2">
+                    <div class="text1">她叫茉茉</div>
+                </div>  
+                <div class="momo">
+                    <img src="img/momo.jpg" class="img2">
+                    <div class="text1">她叫茉茉</div>
+                </div> 
+                <div class="momo">
+                    <img src="img/momo.jpg" class="img2">
+                    <div class="text1">她叫茉茉</div>
+                </div>
+            </div>
+            <div class="body2">
+                <div class="momo">
+                    <img src="img/momo.jpg" class="img2">
+                    <div class="text1">她叫茉茉</div>
+                </div>
+                <div class="momo">
+                    <img src="img/momo.jpg" class="img2">
+                    <div class="text1">她叫茉茉</div>
+                </div>
+                <div class="momo">
+                    <img src="img/momo.jpg" class="img2">
+                    <div class="text1">她叫茉茉</div>
+                </div> 
+                <div class="momo">
+                    <img src="img/momo.jpg" class="img2">
+                    <div class="text1">她叫茉茉</div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function getData(){
+                fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json").then(function(response){
+                    return response.json();
+                }).then(function(data){
+                    let dataList=data.result.results;
+                    let title=[];
+                    let firstImg=[];
+                    for (let i=0;i<dataList.length;i++){
+                        let img=dataList[i].file;
+                        title.push(dataList[i].stitle);
+                        firstImg.push("https"+img.split("https")[1]);
+                    }
+                    //文字
+                    let target=document.querySelectorAll(".promotion");
+                    let oldText=document.querySelectorAll(".text");
+                    let target2=document.querySelectorAll(".momo");
+                    let oldText2=document.querySelectorAll(".text1");
+                    //圖片
+                    let oldImg=document.querySelectorAll(".img1");
+                    let oldImg2=document.querySelectorAll(".img2");
+                    for(let i=0;i<2;i++){
+                        //文字
+                        let newText=document.createElement("div");
+                        newText.className="text";
+                        let textNode=document.createTextNode(title[i]);
+                        newText.appendChild(textNode);
+                        target[i].replaceChild(newText,oldText[i]);
+                        //圖片
+                        let newImg=document.createElement("img");
+                        newImg.className="img1";
+                        newImg.src=firstImg[i];
+                        target[i].replaceChild(newImg,oldImg[i]);
+                    }
+                    for(let i=0;i<8;i++){
+                        //文字
+                        let newText2=document.createElement("div");
+                        newText2.className="text1";
+                        let textNode2=document.createTextNode(title[i+2]);
+                        newText2.appendChild(textNode2);
+                        target2[i].replaceChild(newText2,oldText2[i])
+                        //圖片
+                        let newImg2=document.createElement("img");
+                        newImg2.className="img2";
+                        newImg2.src=firstImg[i+2];
+                        target2[i].replaceChild(newImg2,oldImg2[i]);
+                    }
+                });
+            }
+            getData();
+        </script>            
+    </body>
+</html>

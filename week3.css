@@ -1,0 +1,151 @@
+.body{
+    font-size: 20px;
+    margin: 0px;
+}
+
+.desktop-menu{
+    display: block;
+}
+
+.mobile-menu{
+    display: none;
+}
+
+.home{
+    display: flex;
+    height: 50px;
+    align-items: center;    
+}
+
+.left{
+    flex:none;
+    padding-left: 8px;
+}
+
+.right{
+    flex:auto;    
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 8px;
+}
+
+.item{
+    flex:none;
+    margin-left: 10px;
+}
+
+.title{
+    display: flex;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+    font-size: 200%;
+}
+
+.body1{
+    display: flex;
+    margin-top:20px;
+    justify-content: center;
+}
+
+.promotion{
+    flex: none;width: 590px;
+    display: flex;
+    background-color: beige;
+    align-items: center;
+    margin: 10px;
+    height: 50px;
+}
+
+.img1{
+    flex: none;    
+    width: 80px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text{
+    flex: none;
+    padding-left: 10px;
+}
+
+.body2{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.momo{
+    width: 285px;
+    flex: none;
+    background-color: beige;
+    text-align: center;
+    padding-bottom: 8px;
+    margin: 10px;
+}
+
+.img2{
+    width: 285px;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+}
+
+/* .text1{
+    width: 100%;line-height: 40px;
+    position: absolute; bottom: 7px;
+    
+    background-color: rgba(255, 255, 255, 0.7);
+} */
+
+@media (max-width:1199px){
+    .body1{
+        flex-wrap: wrap;
+    }
+    .promotion{
+        width: 45%;
+    }
+    .body2{
+        flex-wrap: wrap;
+    }
+    .momo{
+        width: 45%;
+    }
+    .img2{
+        width: 100%;
+        object-fit: cover;
+    }
+    .star{
+        width: 12%;
+        position: absolute;bottom:83%;left: 85%;
+    }
+}
+
+@media (max-width:599px){
+    .desktop-menu{
+        display: none;
+    }
+    .mobile-menu{
+        display: block;
+    }
+    .body1{
+        flex-wrap: wrap;
+    }
+    .promotion{
+        width: 90%;
+    }
+    .body2{
+        flex-wrap: wrap;
+    }
+    .momo{
+        width: 90%;
+    }
+    .img2{
+        width: 100%;
+        object-fit: cover;
+    }
+    .star{
+        width: 8%;
+        position: absolute;bottom: 87%;left: 90%;
+    }
+}
